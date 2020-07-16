@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script type="text/javascript" 
+    src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand">
+            <%=formval.name %>
+          </a>      
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a class="nav-link" 
+                id="navbarDropdown"
+                 role="button" 
+                 data-toggle="dropdown" 
+                 aria-haspopup="true" 
+                 aria-expanded="false">
+                <%=formval.email %>
+                </a>
+                <a class="nav-link " 
+                href="http://localhost:3001" 
+                id="navbarDropdown"
+                role="button" 
+                aria-haspopup="true" 
+                aria-expanded="false">
+                Logout
+               </a>
+          </div>
+        </div>
+      </nav>
+
+                <div>
+                    <u>
+                    <h1 class="text-center"
+                        style="font-size: 50px;
+                               font-weight: bold;">
+                    COVID TRACKER
+                  </h1>
+                  </u>
+                  <p class="text-center"
+                     style="font-size: 25px;">
+                     Search By Countries
+                  </p>
+                </div>  
+
+                <div 
+                class="input-group mb-3"
+                style="width: 350px;
+                padding-left: 80px;">
+                   <div class="input-group-prepend">
+                      <button class="btn btn-outline-dark" 
+                      onclick="getVal()"
+                      type="button" 
+                      id="button-addon1">
+                      Search
+                    </button>
+                    <div>
+                  <input type="text" class="form-control" 
+                  id="country1"
+                 placeholder="Search country" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                </div>
+                </div>
+            </div>
+
+                  <div class="input-group mb-3"
+                       style="width: 350px;
+                       padding-left: 80px;">
+                     <div class="input-group-prepend">
+                        <button class="btn btn-outline-dark" 
+                                style="padding-right:30px"
+                                onclick="getIndiaVal()"
+                                type="button" 
+                                id="button-addon2">
+                                India
+                        </button>
+                    </div>
+                    <input type="text" 
+                           id="india1"
+                           class="form-control" 
+                           placeholder="Search By India" 
+                           aria-label="Example text with button addon"
+                           aria-describedby="button-addon1">
+                </div>
+               
+              <div
+                   style="display: none;"
+                   id="r0">
+                   <div
+                      id="r1"
+                      class="container "
+                      style="padding-bottom: 50px;padding-top: 50px ;
+                             border:2px solid #cecece;
+                             border-radius: 5px; 
+                              margin-left: 80px;"
+                    >
+                         <div class="row">
+                         <div class="col-5"
+                              style="margin-top: 30px;"
+                         >
+                        <img
+                          id="im1"
+                          height="40px"
+                          width="60px"
+                          style="margin-bottom: 10px;"
+                        />
+                       <div 
+                          style="width: 200px;"
+                          class="input-group input-group-sm mb-3">
+                         <div class="input-group-prepend">
+                          <span class="input-group-text"
+                                id="inputGroup-sizing-sm">
+                                Name
+                          </span>
+                        </div>
+                        <input type="text"
+                               id="test1"
+                               class="form-control"
+                               aria-label="Sizing example input" 
+                               value=""
+                               aria-describedby="inputGroup-sizing-sm">
+                       </div>
+                       <div 
+                           style="width: 200px;"
+                           class="input-group input-group-sm mb-3">
+                       <div class="input-group-prepend">
+                       <span class="input-group-text"
+                                id="inputGroup-sizing-sm">
+                                Population
+                      </span>
+                          </div>
+                          <input type="text"
+                                 id="test2"
+                                 class="form-control"
+                                 aria-label="Sizing example input" 
+                                 value=""
+                                 aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                        <div 
+                                style="width: 200px;"
+                                class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                        <span 
+                              class="input-group-text" 
+                              id="inputGroup-sizing-sm">
+                              Active
+                        </span>
+                        </div>
+                        <input type="text"
+                                  id="test3"
+                                  class="form-control" 
+                                  aria-label="Sizing example input" 
+                                  value=""
+                                  aria-describedby="inputGroup-sizing-sm">
+                       </div>
+                       <div 
+                                 style="width: 200px;"
+                                 class="input-group input-group-sm mb-3">
+                        <div 
+                                  class="input-group-prepend">
+                        <span 
+                                 class="input-group-text" 
+                                 id="inputGroup-sizing-sm">
+                                 Cases
+                        </span>
+                        </div>
+                        <input type="text"
+                                    id="test4"
+                                    class="form-control"
+                                    aria-label="Sizing example input" 
+                                    value=""
+                                    aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                        <div 
+                                    style="width: 200px;"
+                                    class="input-group input-group-sm mb-3">
+                        <div 
+                                    class="input-group-prepend">
+                       <span        class="input-group-text" 
+                                    id="inputGroup-sizing-sm">
+                                    Today Cases
+                      </span>
+                      </div>
+                      <input        type="text"
+                                    id="test5"
+                                    class="form-control" 
+                                    aria-label="Sizing example input" 
+                                    value=""
+                                    aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                      <div 
+                                    style="width: 200px;"
+                                    class="input-group input-group-sm mb-3">
+                      <div          class="input-group-prepend">
+                      <span         class="input-group-text" 
+                                    id="inputGroup-sizing-sm">
+                                    Deaths
+                      </span>
+                      </div>
+                      <input 
+                                    type="text"
+                                     id="test6"
+                                     class="form-control" 
+                                     aria-label="Sizing example input" 
+                                     value=""
+                                     aria-describedby="inputGroup-sizing-sm">
+                       </div>
+                       <div 
+                                     style="width: 200px;"
+                                     class="input-group input-group-sm mb-3">
+                        <div 
+                                     class="input-group-prepend">
+                        <span        
+                                    class="input-group-text"
+                                     id="inputGroup-sizing-sm">
+                                     Today Deaths
+                       </span>
+                        </div>
+                       <input        type="text"
+                                     id="test7"
+                                     class="form-control" 
+                                     aria-label="Sizing example input" 
+                                     value=""
+                                     aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                      <div 
+                                     style="width: 200px;"
+                                     class="input-group input-group-sm mb-3">
+                      <div 
+                                      class="input-group-prepend">
+                      <span
+                                      class="input-group-text" 
+                                      id="inputGroup-sizing-sm">
+                                      Recovered
+                      </span>
+                      </div>
+                      <input        type="text"
+                                      id="test8"
+                                      class="form-control" 
+                                      aria-label="Sizing example input" 
+                                      value=""
+                                      aria-describedby="inputGroup-sizing-sm">
+                      </div>
+                      <div 
+                                      style="width: 200px;"
+                                      class="input-group input-group-sm mb-3">
+                      <div           
+                                      class="input-group-prepend">
+                      <span
+                                      class="input-group-text"
+                                       id="inputGroup-sizing-sm">
+                                       Today Recovered
+                      </span>
+                      </div>
+                      <input 
+                                      type="text"
+                                       id="test9"
+                                       class="form-control" 
+                                       aria-label="Sizing example input" 
+                                       value=""
+                                       aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                    </div>
+                    <div 
+                                       class="col-7"
+                                       id="hello"
+                                       style="margin-top: 0px;"
+                    >
+                    <canvas 
+                                       id="myCanvas"
+                                       width="400" 
+                                       height="500">
+                                       Your browser does not support the canvas feature.
+                    </canvas>
+                    </div>
+                    </div>
+                    </div>
+                   </div>
+             
+                   <div
+                                      id="r5"
+                                      style="display: none;"
+                   >
+              
+                  <div                 id="chartContainer" 
+                                       class="row border border-danger"
+                                       style="height: 300px; width: 90%;
+                                              margin-left: 50px;"
+                  >
+                </div>
+              
+              <div
+                                       class="row"
+                                       style="margin-top: 50px;"
+              >
+              <div                    class="col-3"
+                                      style="margin-left: 90px;"
+                                   
+              >
+              <div 
+                                      style="background-color: #758AA2;border-radius: 15px;"
+                                      class="card" 
+                                      style="width: 18rem;"
+              
+              >
+              <img 
+                                      src="https://dataconomy.com/wp-content/uploads/2020/04/visuals-0RPf107BLek-unsplash-scaled.jpg" 
+                                      style="width: 336px;
+                                             height: 250px;
+                                            border-radius: 5px;"
+                                      class="card-img-top" >
+                <div                  class="card-body"
+                >
+                <div 
+                                       style="width: 200px;"
+                                       class="input-group input-group-sm mb-3"
+                >
+                    
+                <div 
+                                        class="input-group-prepend">
+                <span 
+                                         class="input-group-text"
+                                         id="inputGroup-sizing-sm">
+                                         Active
+                </span>
+                </div>
+                <input                   type="text"
+                                         id="t1"
+                                         class="form-control"
+                                         aria-label="Sizing example input" 
+                                         value=""
+                                         aria-describedby="inputGroup-sizing-sm">
+                </div>
+                </div>
+                </div>
+                </div>
+                <div          
+                                          class="col-3">
+                <div                      class="card" 
+                                          style="background-color: #758AA2;
+                                                 border-radius: 15px;"
+                                          style="width: 18rem;">
+               <img                       src="https://cdn.vox-cdn.com/thumbor/LcDm5dKD30Rd4u_kstC-DFEOQxI=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19786007/acastro_200311_3936_coronavirus_0002.0.jpg"
+                                          style="width: 336px;
+                                                height: 250px;
+                                                border-radius: 5px;"
+                                          class="card-img-top">
+               <div                       class="card-body">
+               <div 
+                                          style="width: 200px;"
+                                          class="input-group input-group-sm mb-3">
+                    
+               <div                       class="input-group-prepend">
+               <span                      class="input-group-text" 
+                                          id="inputGroup-sizing-sm">
+                                          Death
+               </span>
+               </div>
+               <input                     type="text"
+                                          id="t2"
+                                          class="form-control" 
+                                          aria-label="Sizing example input" 
+                                          value=""
+                                          aria-describedby="inputGroup-sizing-sm">
+               </div>
+               </div>
+               </div>
+               </div>
+               <div                        class="col-3">
+               <div                        class="card"
+                                           style="background-color: #758AA2;
+                                                  border-radius: 15px;"
+                                           style="width: 18rem;">
+               <img                        src="https://img.etimg.com/thumb/width-640,height-480,imgsize-542487,resizemode-1,msid-76910130/covid-19-in-maharashtra-jails-774-cases-444-recovered-4-deaths.jpg"
+                                           style="width: 336px;
+                                                  height: 250px;
+                                                  border-radius: 5px;"
+                                            class="card-img-top">
+                <div                        class="card-body">
+                <div 
+                                             style="width: 200px;"
+                                             class="input-group input-group-sm mb-3">
+                    
+                <div                         class="input-group-prepend">
+                <span                        class="input-group-text"
+                                             id="inputGroup-sizing-sm">
+                                             Recovered
+                </span>
+                </div>
+                <input                       type="text"
+                                             id="t3"
+                                             class="form-control"
+                                             aria-label="Sizing example input" 
+                                             value=""
+                                             aria-describedby="inputGroup-sizing-sm">
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div> 
+                </div>
+      
+       <script >
+        const getVal=()=>{
+                const c=document.getElementById("country1").value;
+                console.log(c)
+                fetch(`https://corona.lmao.ninja/v2/countries/${c}`)
+                .then(res=>res.json())
+                .then(json=>{
+                      console.log(json)
+                      if(json.country!==undefined)
+                      {
+                      document.getElementById("r0").setAttribute('style','display:block')
+                      document.getElementById("im1").setAttribute('src',`${json.countryInfo.flag}`)
+                      document.getElementById("test1").value=json.country
+                      document.getElementById("test2").value=json.population
+                      document.getElementById("test3").value=json.active
+                      document.getElementById("test4").value=json.cases
+                      document.getElementById("test5").value=json.todayCases
+                      document.getElementById("test6").value=json.deaths
+                      document.getElementById("test7").value=json.todayDeaths
+                      document.getElementById("test8").value=json.recovered
+                      document.getElementById("test9").value=json.todayRecovered
+                      var canvas = document.getElementById("myCanvas");
+                      const pa=((json.active/json.population)*100)
+                      const pc=((json.cases/json.population)*100)
+                      const pd=((json.deaths/json.population)*100)
+                      const pr=((json.recovered/json.population)*100)
+                      console.log(pa)
+    var ctx = canvas.getContext("2d");
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Active', 'Cases', 'Deaths', 'Recovered'],
+            datasets: [{
+                label: 'Percentage',
+                data: [pa, pc, pd, pr],
+                backgroundColor: "rgb(171, 51, 83)"
+            }]
+        },
+        options: {
+            responsive: false,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: 5,
+                        stepSize:1
+                    }
+                }]
+            }
+        }
+    
+    });
+              }
+              else{
+                document.getElementById("r0").setAttribute('style','display:none')
+              }
+                    })
+                
+                .catch(err=>console.log(err))
+                }      
+         
+        const getIndiaVal= ()=>{
+          const c=document.getElementById("india1").value;
+          var arr=[];
+            fetch('https://api.covid19india.org/data.json')
+           .then(res=>
+               res.json()
+           )
+           .then(val=>{
+             for(var i=0;i<val.cases_time_series.length;i++)
+             {
+              
+              var obj1={};
+              obj1.y=parseInt(val.cases_time_series[i].dailyconfirmed);
+              obj1.label=val.cases_time_series[i].date;
+              arr.push(obj1)   
+             }          
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Covid Cases"
+	},
+	axisY: {
+		title: "Total Cases"
+	},
+	data: [{        
+		type: "column",  
+		showInLegend: true, 
+		legendMarkerColor: "grey",
+		legendText: "Dates",
+		dataPoints: arr
+	}]
+});
+chart.render();
+             for(var i=0;i<val.statewise.length;i++)
+             {
+               if(val.statewise[i].state===c)
+                 {
+                 console.log(val.statewise[i].state)
+                document.getElementById("r5").setAttribute("style","display:block")
+                document.getElementById("t1").value=val.statewise[i].confirmed
+                document.getElementById("t2").value=val.statewise[i].deaths
+                document.getElementById("t3").value=val.statewise[i].recovered
+                return
+                 }
+               else{
+                document.getElementById("r5").setAttribute('style','display:none')
+                   }
+             }
+         })
+            .catch(err=>console.log(err))
+           }
+       </script>
+</body>
+</html>
